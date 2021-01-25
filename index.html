@@ -6,44 +6,45 @@
     <title>Document</title>
 </head>
 <body>
-<form>
-Imię: <input type="text" name="imie"><br><br>
-Wiek: <input type="text" name="wiek"><br><br>
-Do sprawdzenia szesnastkowej nazwy koloru (HEX) <input type="color"><br><br>
-Tu podaj kolor: <input type="text" name="kolor"><br><br>
-<input type="submit" name="button">
-</form>    
+        Imie: <input type="text" name="imie" id="imie">
+        <br>
+        Wiek: <input type="text" name="wiek" id="wiek">
+        <br>
+        Do sprawdzenia szesnastkowej nazwy koloru (HEX) <input type="color"><br>
+        Tu podaj kolor: <input type="text" name="kolor" id="kolor">
+        <button onclick="sprawdzanie()">Prześlij</button>
+    <div id="textbox"></div>
     <script>
-let imie=document.getElementsByName("imie");
-let wiek=parseInt(document.getElementsByName("wiek"));
-let kolor=document.getElementsByName("imie");
-const guzik=document.querySelector(".button");
-let pelnoletnosc=18;
-let koncowy;
-      
-const color=new Array(kolor);
+        function sprawdzanie(){
+            let imie = document.getElementById("imie").value;
+            let wiek = parseInt(document.getElementById("wiek").value);
+            let kolor = document.getElementById("kolor").value;
+            let pelnoletnosc = 18;
 
-if(color[0]!="#"){
-    alert("Kolory szesnastkowe zaczynają sie od #.");
-}
+            let wypisz = document.getElementById("textbox");
+            let koncowy="";
+            if (wiek==18){
+                koncowy = "Jesteś pełnoletni";
+            } else if(wiek<18){
+                koncowy = "Do pełnoletności brakuje ci "+(pelnoletnosc-wiek)+"lat.";
+            } else{
+                koncowy = "Jesteś pełnoletni od "+(wiek-pelnoletnosc)+" lat.";
+            }
 
-    if(imie.length < 3){
-    document.write("Podaj prawidłowe imię");
-}
-switch (wiek){
-case 18: 
-let koncowy=document.write("Jesteś pełnoletni");break;
-case <18:
-let koncowy=document.write("Do pełnoletności brakuje ci "+(pelnoletnosc-wiek)+ "lat.");break;
-case >18:
-let koncowy=document.write("Jesteś pełnoletni od "+(wiek-pelnoletnosc)+" lat.");break;
-}
-
-guzik.addEventListener("click", ()=>{
-document.write("Hej, Masz na imię "+imie+"."+koncowy);
-});
-
-
+            if(imie.length<3){
+                wypisz.innerHTML="Podałeś/aś niepoprawne imie";
+            } else{
+            if(kolor[0]!="#"){
+                wypisz.innerHTML="Kolor nie zaczyna się od #";
+            } else{
+                wypisz.style.color=kolor;
+                wypisz.innerHTML=("Hej, Masz na imię "+imie+".");
+                wypisz.innerHTML+=koncowy;
+            }
+        }
+            
+            
+        }
     </script>
 </body>
 </html>
