@@ -6,11 +6,44 @@
     <title>Document</title>
 </head>
 <body>
-    
-
+<form>
+Imię: <input type="text" name="imie"><br><br>
+Wiek: <input type="text" name="wiek"><br><br>
+Do sprawdzenia szesnastkowej nazwy koloru (HEX) <input type="color"><br><br>
+Tu podaj kolor: <input type="text" name="kolor"><br><br>
+<input type="submit" name="button">
+</form>    
     <script>
+let imie=document.getElementsByName("imie");
+let wiek=parseInt(document.getElementsByName("wiek"));
+let kolor=document.getElementsByName("imie");
+const guzik=document.querySelector(".button");
+let pelnoletnosc=18;
+let koncowy;
+      
+const color=new Array(kolor);
 
-        
+if(color[0]!="#"){
+    alert("Kolory szesnastkowe zaczynają sie od #.");
+}
+
+    if(imie.length < 3){
+    document.write("Podaj prawidłowe imię");
+}
+switch (wiek){
+case 18: 
+let koncowy=document.write("Jesteś pełnoletni");break;
+case <18:
+let koncowy=document.write("Do pełnoletności brakuje ci "+(pelnoletnosc-wiek)+ "lat.");break;
+case >18:
+let koncowy=document.write("Jesteś pełnoletni od "+(wiek-pelnoletnosc)+" lat.");break;
+}
+
+guzik.addEventListener("click", ()=>{
+document.write("Hej, Masz na imię "+imie+"."+koncowy);
+});
+
+
     </script>
 </body>
 </html>
